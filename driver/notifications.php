@@ -125,7 +125,7 @@ function humanTiming ($time)
 }
 
 ?>
-<li class="list-group-item"><img src="../assets/icons/24/new_message-24.png"><strong><?=$address;?></strong> <?='Request Was Accepted '.humanTiming($time).' ago'?> Ago <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#accepted_request<?=$id;?>"><span class="glyphicon glyphicon-resize-full"></span> Finish</button></li>
+<li class="list-group-item"><img src="../assets/icons/24/new_message-24.png"><strong><?=$address;?></strong> <?='Request Was Accepted '.humanTiming($time).' Ago'?>  <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#accepted_request<?=$id;?>"><span class="glyphicon glyphicon-resize-full"></span> Finish</button></li>
 
 
 <div class="modal fade" id="accepted_request<?=$id;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -137,21 +137,36 @@ function humanTiming ($time)
       </div>
       <div class="modal-body">
 <div id="request_status<?=$id;?>"></div>
-<p>You have a new Request at <strong><?=$address;?></strong> Requested <?= $mins; ?> Minutes Ago</p>
+<p>You have a new Request at <strong><?=$address;?></strong> <?php echo'Requested '.humanTiming($time).' Ago'?>  </p>
 
   <div class="form-group">
     <label >Amount Charged (Ksh.)</label>
-    <input type="number" class="form-control" id="amount" placeholder="Amount Charged">
+    <input type="number" class="form-control" id="amount<?=$id;?>" placeholder="Amount Charged">
   </div>
       </div>
       <div class="modal-footer">
        <button type="button" class="btn btn-default" data-dismiss="modal" id="close<?=$id;?>">Close</button>
-        <button type="button" class="btn btn-success" id="accept_request<?=$id;?>"><span class="glyphicon glyphicon-ok-sign"></span> Finish</button>
+        <button type="button" class="btn btn-success" id="finish_request<?=$id;?>"><span class="glyphicon glyphicon-ok-sign"></span> Finish</button>
       </div>      
     </div>
   </div>
 </div>
+<script>
 
+ $("#finish_request<?=$id;?>").click(function(){
+     var amount1 = $("#amount<?=$id;?>").val();
+     var idd1 = "<?=$id;?>";
+
+if(amount1==''){
+
+}else{
+   $.post("config/",{amount:amount1, idd:idd1}, function(data){
+
+   })
+}
+
+ })
+</script>
 <?php     
 }
 ?>

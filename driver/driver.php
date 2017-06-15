@@ -74,7 +74,7 @@ include("config/driver_details.php");
                    
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a id="car_report">Taxi Reports</a>
+                                        <a id="trip_report">trip Reports</a>
                                     </li>
                                     <li>
                                         <a href="#">Cumilative Reports</a>
@@ -145,7 +145,11 @@ include("config/driver_details.php");
 
     $("#requests").click(function(){
         $("#owner_area").load("notifications.php");
-    })    
+    })  
+
+    $("#trip_report").click(function(){
+        $("#owner_area").load("trip_reports.php");
+    })  
               
   </script>
 </body>

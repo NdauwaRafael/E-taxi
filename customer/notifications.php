@@ -71,7 +71,16 @@ include("../config/connection.php");
                 <div class="media">
                 <div class="media-left">
                     <a href="#">
-                    <img class="media-object" src="assets/icons/48/Ok-48 .png" alt="...">
+                    <?php if ($status=='Declined') {
+                        ?>
+                        <img class="media-object" src="assets/icons/48/close_window-48.png" >
+                        <?php
+                    }else {
+                       ?>
+                       <img class="media-object" src="assets/icons/48/Ok-48 .png" >
+                       <?php
+                    } ?>
+                    
                     </a>
                 </div>
                 <div class="media-body">

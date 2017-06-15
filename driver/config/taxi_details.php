@@ -1,7 +1,7 @@
 <?php
 @session_start();
-include("../config/connection.php");  
- 
+@include("../config/connection.php");  
+@include("../../config/connection.php"); 
   $select_taxi ="SELECT * FROM `taxi` WHERE `plate` IN (SELECT `taxi_plate` FROM `drivers` WHERE `email`='{$_SESSION['driver_email']}')";
 
 
