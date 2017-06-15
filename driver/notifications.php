@@ -136,7 +136,7 @@ function humanTiming ($time)
         <h4 class="modal-title" id="myModalLabel">New Request</h4>
       </div>
       <div class="modal-body">
-<div id="request_status<?=$id;?>"></div>
+<div id="finish_status<?=$id;?>"></div>
 <p>You have a new Request at <strong><?=$address;?></strong> <?php echo'Requested '.humanTiming($time).' Ago'?>  </p>
 
   <div class="form-group">
@@ -158,11 +158,15 @@ function humanTiming ($time)
      var idd1 = "<?=$id;?>";
 
 if(amount1==''){
-
+            $("#finish_status<?=$id;?>").html('<div class="alert alert-danger" role="alert">Fill In Amount Charged For This Trip </div>');
 }else{
-   $.post("config/",{amount:amount1, idd:idd1}, function(data){
+   $.post("config/finish.php",{amount:amount1, idd:idd1}, function(data){
+      if(data=='Job Finished'){
+            $("#finish_status<?=$id;?>").html('<div class="alert alert-success" role="alert">Job Request Has Been Finished. </div>');
+      }else{
 
-   })
+      }
+   });
 }
 
  })
