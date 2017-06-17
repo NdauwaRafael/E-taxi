@@ -1,9 +1,9 @@
 <?php
-include("config/driver_details.php"); 
-
+/*
 if(!taxidriver()){
     header("location: ../start.php");
 }
+*/
 
 ?>
 <!DOCTYPE html>
@@ -40,45 +40,22 @@ if(!taxidriver()){
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="../assets/img/driver1.jpg" class="user-image img-responsive"/>
+                    <img src="../assets/img/agent.png" class="user-image img-responsive"/>
 					</li>
 
                     <li>
                         <a class="link active-menu" id="carCust"><i class="fa fa-dashboard fa-2x"></i>Home</a>
                     </li>
 
-                    <li>
-                        <a  class="link" id="profile"><i class="fa fa-user fa-2x" aria-hidden="true"></i></i><?=$driverFname.' '.$driverLname; ?></a>
-                    </li>
                       <li>
-                        <a href="#"><img src="../assets/icons/24/taxi-24.png"> My Taxi<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a id="view_taxi">View Details</a>
-                            </li>
-                        </ul>
+                        <a href="#"><img src="../assets/icons/24/taxi-24.png"> Taxies<span class="fa arrow"></span></a>
                     </li>
 
                      <li>
-                        <a class="link"  href="tab-panel.html"><i class="fa fa-print fa-2x"></i> Notifications<span class="fa arrow"></span></a>
-                   
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a id="requests">Job Requests</a>
-                                    </li>
-                                </ul>                   
+                        <a class="link"  href="tab-panel.html"><i class="fa fa-print fa-2x"></i> Drivers<span class="fa arrow"></span></a>
+                 
                     </li>                
 				
-                    <li>
-                        <a class="link"  href="tab-panel.html"><i class="fa fa-print fa-2x"></i> Reports<span class="fa arrow"></span></a>
-                   
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a id="trip_report">trip Reports</a>
-                                    </li>
-    
-                                </ul>                   
-                    </li>
 
                 </ul>
                
@@ -90,7 +67,7 @@ if(!taxidriver()){
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h5><img src="../assets/icons/24/carpool-24.png" <strong style="color:black;"> | <?=$driverFname.' '.$driverLname; ?></strong> | <a href="../logout.php"> Logout</a></h5>                         
+                     <h5><img src="../assets/icons/24/carpool-24.png" <strong style="color:black;"> | </strong> | <a href="../logout.php"> Logout</a></h5>                         
                     </div>
                 </div>
                  <!-- /. ROW  -->

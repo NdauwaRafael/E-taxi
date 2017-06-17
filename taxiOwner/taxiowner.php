@@ -92,7 +92,8 @@ if(!taxiowner()){
                                         <a id="car_report">Taxi Reports</a>
                                     </li>
                                     <li>
-                                        <a href="#">Cumilative Reports</a>
+                                        <a id="trips_report">Cumilative Reports</a>
+                                        
                                     </li>
                                 </ul>                   
                     </li>
@@ -173,7 +174,10 @@ if(!taxiowner()){
 
     $("#profile").click(function(){
         $("#owner_area").load("profile.php");
-    })               
+    }) 
+    $("#trips_report").click(function(){
+        $("#owner_area").load("reports/requests.php");
+    })                   
   </script>
 </body>
 </html>

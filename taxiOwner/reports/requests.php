@@ -1,7 +1,3 @@
-<div class="panel panel-info">
-  <div class="panel-heading">Report On All Trips Made By The Taxi</div>
-  <div class="panel-body">
-
 <div class="page-header">
   <h4>Filter Report Monthly</h4>
 	<form class="form-inline" role="form" action="sales_report.php" method="post">
@@ -42,47 +38,50 @@
 
 <div id="trips_reports" class="table-responsive">
 
-<table class="table table-striped">
+<table class="table table-condensed table-striped">
 
 <thead>
-<th>#</th>
-<th>Date</th>
-<th>Customer Address</th>
-<th>Amount Charged</th>
-</thead>
+<tr>
+    <th>#</th>
+    <th>Time</th>
+    <th>Address</th>
+    <th>Taxi</th>
+    <th>Status</th>
+    <th>Amount</th>
 
+    </tr>  
+</thead>
 
 <tbody>
 <?php
-require "config/taxi_details.php";
-$trips = "SELECT * FROM `request` WHERE `taxi` = '$plate' AND `status` = 'Completed'";
-$trip_result = mysqli_query($con, $trips);
-$t = 0;
-while ($trip = mysqli_fetch_array($trip_result)) {
-    $trip_date = $trip['request_time'];
-    $trip_address = $trip['address'];
-    $trip_amount = $trip['amount_charged'];
-    $t++;
+session_start();
+include("../../config/connection.php"); 
 
+$request_report = "SELECT * FROM `request` WHERE `taxi` IN (SELECT  `plate` FROM `taxi` WHERE `owner`='{$_SESSION['owner_email']}')";
+$rrp = 0;
+$request_report_result = mysqli_query($con, $request_report);
+while ($rr = mysqli_fetch_array($request_report_result)) {
+$taxi = $rr['taxi'];
+$address = $rr['address'];
+$time = $rr['request_time'];
+$amount = $rr['amount_charged'];
+$status = $rr['status'];
+$rrp++;
 ?>
-  <tr>
-     <td><?=$t;?></td>
-     <td><?=$trip_date;?></td>
-     <td><?=$trip_address;?></td>
-     <td><?=$trip_amount;?></td>
-  </tr>
-<?php    
+<tr>
+<td><?=$rrp;?></td>
+<td><?=$time;?></td>
+<td><?=$address; ?></td>
+<td><?=$taxi; ?></td>
+<td><?=$status; ?></td>
+<td>Ksh. <?=$amount?></td>
+</tr>
+<?php
 }
 ?>
 </tbody>
-
 </table>
-
 </div>
-  </div>
-</div>
-
-
 <script type="text/javascript">
 	$("#filer_report").click(function(){
       var month1 = $("#month").val();
@@ -90,12 +89,10 @@ while ($trip = mysqli_fetch_array($trip_result)) {
       if (month1=='' || category1=='' ) {
          $("#report_status").html("Select ALL Options");
       }else{
-         $.post("config/trips_report.php",{month:month1, category:category1},function(data){
+         $.post("reports/config/requests.php",{month:month1, category:category1},function(data){
          	$("#trips_reports").html(data);
             $("#report_status").html("");
          })         
       }
 	})
 </script>
-
-</div>

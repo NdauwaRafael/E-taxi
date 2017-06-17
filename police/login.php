@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-default" style="  background-color: #6d4c41;
   padding-left: 15px; color:#ccc;" id="login_btn" >Login</button>
 
-  <a class="btn btn-success"id="reg" role="button"><i class="fa fa-user-plus " aria-hidden="true"></i> Register</a>
+
       </form>
 <script>
           $("#login_btn").click(function(){
@@ -22,16 +22,12 @@
               if (email1==''|| password1=='') {
                   $("#login_status").html('Fill in Empty Fields').css("color","red");
               }else{
-                  $.post("customer/login.php",{email:email1, password:password1}, function(data){
+                  $.post("police/login.config.php",{email:email1, password:password1}, function(data){
                       $("#login_status").html(data);
                       if(data=='success'){
-                          window.location.href="home.php";
+                          window.location.href="police/police.php";
                       }
                   });
               }
-          })  
-          
-$("#reg").click(function(){
-    $("#login_load").load("customer_template/register.php");
-})            
+          })    
 </script>      

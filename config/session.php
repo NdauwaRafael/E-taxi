@@ -18,4 +18,12 @@ function taxiowner() {
 	}
 }
 
+function taxidriver() {
+	if (isset($_SESSION['driver_email']) && !empty($_SESSION['driver_email'])) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
 ?>

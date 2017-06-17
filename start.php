@@ -57,7 +57,7 @@ if(customerLoggedin()){
                         <a class="link" id="carOwner"><i class="fa fa-taxi fa-3x" aria-hidden="true"></i> Taxi Owner</a>
                     </li>
                     <li>
-                        <a class="link"  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Police</a>
+                        <a class="link"  id="police"><i class="fa fa-qrcode fa-3x"></i> Police</a>
                     </li>
 
 
@@ -131,7 +131,15 @@ $("#login_load").load("customer_template/login.php");
              $(this).addClass('active-menu');
              $(".changing_title").text("Driver Login to E-taxi");
 
-          })                    
+          })
+          $("#police").click(function(){
+              $("#login_load").load("police/login.php");
+             $('.link.active-menu').removeClass('active-menu');
+             $(this).addClass('active-menu');
+             $(".changing_title").html('<img src="assets/icons/48/police-48.png"> Police  Login to E-taxi');
+
+          })          
+                             
 
     </script>
    
